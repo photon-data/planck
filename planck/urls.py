@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/connection/', include('VersionControlManager.urls')),
     path('api/v1/connection/', include('DataSourceManager.urls')),
+    path('api/v1/user/', include('UserManager.urls')),
 
 ]
