@@ -6,4 +6,4 @@ from VersionControlManager.models.VersionControlType import VersionControlType
 class VersionControlTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = VersionControlType
-        fields = ['id', 'name']
+        fields = ['id', 'name','required_fields']

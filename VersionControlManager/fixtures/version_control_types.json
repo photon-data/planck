@@ -1,0 +1,38 @@
+[
+{
+    "model": "VersionControlManager.versioncontroltype",
+    "pk": 1,
+    "fields": {
+        "name": "gitlab",
+        "required_fields": [
+            "api_token",
+            "username",
+            "project_id"
+        ]
+    }
+},
+{
+    "model": "VersionControlManager.versioncontroltype",
+    "pk": 2,
+    "fields": {
+        "name": "github",
+        "required_fields": [
+            "api_token",
+            "username",
+            "organisation_name"
+        ]
+    }
+},
+{
+    "model": "VersionControlManager.versioncontroltype",
+    "pk": 3,
+    "fields": {
+        "name": "bitbucket",
+        "required_fields": [
+            "api_token",
+            "username",
+            "project_id"
+        ]
+    }
+}
+]

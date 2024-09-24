@@ -59,6 +59,7 @@ ALLOWED_HOSTS = []
 LOCAL_APPS = [
  'ProjectManager',
  'VersionControlManager',
+ 'DataSourceManager',
  'Utilities'
 ]
 

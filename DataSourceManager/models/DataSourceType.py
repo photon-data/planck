@@ -1,11 +1,10 @@
 from django.db import models
 from django.core.exceptions import ValidationError
 
-class VersionControlType(models.Model):
+class DataSourceType(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=50)
     required_fields = models.JSONField(default=dict)
-
 
     def __str__(self):
         return self.name
@@ -13,7 +12,7 @@ class VersionControlType(models.Model):
     objects = models.Manager()
 
     def delete(self, *args, **kwargs):
-        if self.version_controls.exists():
+        if self.data_connections.exists():
             raise ValidationError(
                 "Cannot delete this version control type because it has existing version control records.")
         super().delete(*args, **kwargs)
