@@ -2,13 +2,20 @@ name: Django CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - '*'           # All branches
+    # Exclude 'main' and 'develop'
+    paths-ignore:
+      - '**/main'
+      - '**/develop'
+
   pull_request:
-    branches: [ "main" ]
+    branches:
+      - develop       # Trigger on pull requests to develop
+      - main          # Trigger on pull requests to main
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -16,15 +23,27 @@ jobs:
         python-version: [3.7, 3.8, 3.9]
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
+
+    - name: Cache Dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
+
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+
     - name: Run Tests
       run: |
-        python manage.py test
+        python manage.py test --verbosity=2
