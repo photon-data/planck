@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - '*'           # All branches
-    # Exclude 'main' and 'develop'
     paths-ignore:
       - '**/main'
-      - '**/develop'
+      - '**/develop'  # Exclude 'main' and 'develop'
 
   pull_request:
     branches:
@@ -31,6 +30,18 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - name: Set up PostgreSQL
+      uses: harmon758/postgresql-action@v1
+      with:
+        postgresql version: '13'  # Specify the version of PostgreSQL
+        postgresql db: 'test_db'   # Name of the test database
+        postgresql user: 'postgres' # Default PostgreSQL user
+        postgresql password: 'postgres' # Password for the default user
+
+    - name: Configure database
+      run: | 
+        echo '{ "ENGINE": "django.db.backends.postgresql_psycopg2", "DB_HOST": "localhost", "DB_PORT": 5432, "DB_USER": "postgres", "DB_PASSWORD": "postgres", "DB_NAME": "test_db"}' > configs/development_env/database.json
+
     - name: Cache Dependencies
       uses: actions/cache@v3
       with:
@@ -45,5 +56,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run Tests
+      env: # Set environment variables for database connection
+        DATABASE_URL: postgres://postgres:postgres@localhost/test_db
       run: |
         python manage.py test --verbosity=2
