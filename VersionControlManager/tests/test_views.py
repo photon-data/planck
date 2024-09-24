@@ -1,13 +1,27 @@
 from rest_framework import status
+from django.contrib.auth import get_user_model
+
 from rest_framework.test import APITestCase
 from ..models import VersionControl, VersionControlType
+from django.test.utils import override_settings
+from django.conf import settings
 
 class VersionControlAPITest(APITestCase):
     def setUp(self):
+        User = get_user_model()
+        self.user = User.objects.create_user(
+            username='testuser',
+            password='testpassword'
+        )
+
         self.type = VersionControlType.objects.create(name='gitlab')
         self.url = '/api/v1/connection/versioncontrol/'
+        self.client.force_authenticate(user=self.user)
+
 
     def test_create_version_control(self):
+
+
         data = {
             'connection_name': 'my_gitlab_connection',
             'type': 'gitlab',
