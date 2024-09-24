@@ -1,10 +1,4 @@
 
-
-from rest_framework import serializers
-from VersionControlManager.models.VersionControl import VersionControl
-from VersionControlManager.models.VersionControlType import VersionControlType
-from .VersionControlTypeSerializer import VersionControlTypeSerializer
-
 from rest_framework import serializers
 from VersionControlManager.models import VersionControl, VersionControlType
 

@@ -1,7 +1,5 @@
 from django.db import models
-import uuid
 from django.core.exceptions import ValidationError
-from .mixins.VersionControlValidationMixin import VersionControlValidationMixin
 
 class VersionControlType(models.Model):
     id = models.AutoField(primary_key=True)
