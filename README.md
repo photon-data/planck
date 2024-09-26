@@ -1,12 +1,12 @@
 
 
 
-<p align="center"><img src="https://raw.githubusercontent.com/photon-data/Confo/refs/heads/main/assets/logo.png" width="300">
-<img src="https://raw.githubusercontent.com/photon-data/Confo/refs/heads/main/assets/logophoton.png" width="100">
+<p align="center"><img src="https://raw.githubusercontent.com/photon-data/planck/refs/heads/main/docs/assets/logo.png" width="300">
+<img src="https://raw.githubusercontent.com/photon-data/planck/refs/heads/main/docs/assets/logophoton.png" width="100">
 </p>
 <p align="center"></p>
 
-<p align="center"><h3 style="color: #193967; text-align: center">Multi backend configuration manager for python</h3></p>
+<p align="center"><h3 style="color: #193967; text-align: center">Open source universal semantic layer</h3></p>
 
 <p align="center">
 
@@ -16,3 +16,25 @@
 
 
 </p>
+
+### Overview
+ - <a href="docs/Features.md" >Features</a>
+ - <a href="docs/Architecture.md" >High level architecture</a>
+ - <a href="docs/Demos.md" >Demos</a>
+ - <a href="docs/getting_started.md" >Getting started with Planck</a>
+ - <a href="docs/conf.md" >Configurations</a>
+ - <a href="docs/testing.md" >Running Tests</a>
+
+### Contributing 
+
+### License
+
+### Acknowledgements
+
+### Issues /Support
+
+### FAQ 
+
+### Community 
+
+
